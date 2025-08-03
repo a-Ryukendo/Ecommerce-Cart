@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Set proper permissions
-chmod -R 777 storage
-chmod -R 777 bootstrap/cache
+chmod -R 777 storage 2>/dev/null || true
+chmod -R 777 bootstrap/cache 2>/dev/null || true
 
 # Create storage directories if they don't exist
 mkdir -p storage/framework/sessions
