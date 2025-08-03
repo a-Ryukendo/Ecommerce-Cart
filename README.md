@@ -95,6 +95,8 @@ LaravelEcommerceCart/
 │   └── cart.blade.php                 # Cart page
 ├── routes/
 │   └── web.php                        # Application routes
+├── Dockerfile                          # Docker configuration for deployment
+├── render.yaml                         # Render deployment configuration
 └── README.md                          # This file
 ```
 
@@ -202,7 +204,18 @@ $request->validate([
 php artisan serve
 ```
 
-### Production Deployment
+### Render Deployment (Recommended)
+1. Push your code to GitHub
+2. Sign up at [render.com](https://render.com)
+3. Connect your GitHub account
+4. Create new Web Service
+5. Select your repository
+6. Configure environment variables
+7. Deploy!
+
+**See `RENDER_DEPLOYMENT.md` for detailed instructions.**
+
+### Other Hosting Options
 1. Set up a web server (Apache/Nginx)
 2. Configure environment variables
 3. Set proper file permissions

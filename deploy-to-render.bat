@@ -36,6 +36,12 @@ if exist render.yaml (
     echo ❌ render.yaml not found
 )
 
+if exist Dockerfile (
+    echo ✅ Dockerfile found - Required for Docker deployment
+) else (
+    echo ❌ Dockerfile not found
+)
+
 echo.
 echo [3/6] Checking .env file is NOT in repository...
 git ls-files | findstr .env >nul
