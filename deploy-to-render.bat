@@ -31,7 +31,7 @@ if exist README.md (
 )
 
 if exist render.yaml (
-    echo ✅ render.yaml found
+    echo ✅ render.yaml found - Render will auto-configure!
 ) else (
     echo ❌ render.yaml not found
 )
@@ -82,9 +82,12 @@ echo 2. Go to render.com and sign up
 echo 3. Connect your GitHub account
 echo 4. Create new Web Service
 echo 5. Select your repository
-echo 6. Configure environment variables
+echo 6. Render will auto-detect PHP/Laravel
 echo 7. Deploy!
+echo.
+echo NOTE: Render will use render.yaml for configuration
+echo No manual environment variable setup needed!
 echo.
 echo See RENDER_DEPLOYMENT.md for detailed instructions.
 echo.
-pause 
+pause
