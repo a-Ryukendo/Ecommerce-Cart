@@ -49,7 +49,7 @@ composer install
 
 ```bash
 # Copy environment file (if not already done)
-cp env.example .env
+cp .env.example .env
 
 # Generate application key
 php artisan key:generate
