@@ -27,11 +27,24 @@ WORKDIR /var/www
 # Copy existing application directory contents
 COPY . /var/www
 
-# Copy existing application directory permissions
-COPY --chown=www-data:www-data . /var/www
+# Set proper permissions
+RUN chown -R www-data:www-data /var/www \
+    && chmod -R 755 /var/www \
+    && chmod -R 777 /var/www/storage \
+    && chmod -R 777 /var/www/bootstrap/cache
 
 # Install dependencies
 RUN composer install --no-dev --optimize-autoloader
+
+# Create storage directories if they don't exist
+RUN mkdir -p /var/www/storage/framework/sessions \
+    && mkdir -p /var/www/storage/framework/views \
+    && mkdir -p /var/www/storage/framework/cache \
+    && chmod -R 777 /var/www/storage
+
+# Copy startup script
+COPY start.sh /var/www/start.sh
+RUN chmod +x /var/www/start.sh
 
 # Change current user to www
 USER www-data
@@ -39,5 +52,5 @@ USER www-data
 # Expose port 8000
 EXPOSE 8000
 
-# Start Laravel application
-CMD php artisan serve --host=0.0.0.0 --port=8000 
+# Start Laravel application using startup script
+CMD ["/var/www/start.sh"]

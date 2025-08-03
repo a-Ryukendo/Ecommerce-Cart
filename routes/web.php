@@ -17,3 +17,12 @@ Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear')
 
 // Checkout route (bonus feature)
 Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+
+// Health check route for debugging
+Route::get('/health', function () {
+    return response()->json([
+        'status' => 'ok',
+        'message' => 'Laravel ECommerce Cart is running',
+        'timestamp' => now()
+    ]);
+});

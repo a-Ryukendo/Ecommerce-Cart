@@ -5,6 +5,8 @@ services:
     plan: free
     dockerfilePath: ./Dockerfile
     envVars:
+      - key: PORT
+        value: 8000
       - key: APP_NAME
         value: Laravel
       - key: APP_ENV
